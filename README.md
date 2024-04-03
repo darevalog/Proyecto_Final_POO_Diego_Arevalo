@@ -119,3 +119,8 @@ classDiagram
         +scrape_mercado_libre(self)
     }
 ```
+
+El contenido y la función de cada módulo son los siguientes: 
+
+### *`__init__.py:`*
+El archivo __init__.py en un módulo de Python es un archivo especial que se utiliza para indicar que el directorio que lo contiene debe ser tratado como un paquete. Estos archivos también pueden contener código Python que se ejecutará cuando el paquete sea importado por primera vez.
