@@ -41,4 +41,19 @@ Además de instalar la librería, es posible que también necesites instalar un 
 pip install lxml
 ```
 
-Una vez que hayas instalado Beautiful Soup y un analizador HTML, estamos listo para empezar a trabajar con la librería en tu código Python.
+Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Proyecto_Final_POO" la cual alojará todos nuestros archivos y estará compuesta de la siguiente manera:
+
+```
+/Proyecto_Final_POO/
+├── paquete/
+│   ├── __init__.py
+│   ├── Controller.py
+│   ├── PersonalizedMenu.py
+│   ├── PMenu.py
+│   ├── RetailMenu.py
+│   ├── RetailScraper.py
+│   ├── WebScraper.py
+│   ├── WikiMenu.py
+│   └── WikiScraper.py
+└── main.py
+```
