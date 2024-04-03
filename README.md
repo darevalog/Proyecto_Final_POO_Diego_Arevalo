@@ -2,7 +2,7 @@
 
 ## `1. Analisis del problema`
 
-Se propuso construir una aplicación que emule un un sistema de webscrapping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que querramos scrapear.
+Se propuso construir una aplicación que emule un un sistema de webs crapping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que querramos scrapear.
 Lo que se buscará hacer es mediante estas bibliotecas y algo de conocimiento de HTML, una vez proporcionado un link, analizar el código fuente de la página para utilizar los identificadores de HTML para requerir todos aquellos objetos con esa misma identificación.
 
 ### *`Biblioteca "requests":`*
@@ -233,5 +233,82 @@ class Controller: # Clase para controlar el flujo de la aplicación
                 os.system("pause")
                 os.system("cls")
 ```
+### *`PMenu.py*
+Este archivo se encarga de la creación del menú inicial con el cual el usuario va a interactuar, ademas crea algunas funciones que luego serán heredadas por WikiMenu, RetailMenu y PersonalizedMenu.
+```python
+import os # Importamos la librería os
 
-### *`PersonalizedMenu.py`*
+class Menu: # Clase para mostrar el menú principal
+    def __init__(self): # Constructor de la clase
+        self.clear_screen()
+
+    def clear_screen(self): # Método para limpiar la pantalla
+        os.system("cls")
+
+    def display_menu(self): # Método para mostrar el menú principal
+        print("-------------- SISTEMA DE WEBSCRAPPING --------------\n")
+        print("1. Webscraping de Wikis predeterminadas.")
+        print("2. Webscraping de páginas de Retail.")
+        print("3. Webscraping de páginas personalizadas.")
+        print("4. Salir\n")
+
+    def get_option(self): # Método para obtener la opción seleccionada por el usuario
+        return input("Ingrese una opción: ")
+```
+
+### *`WikiMenu.py`*
+Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web de tipo wiki y dará algunas opciones predeterminadas las cuales el usuario podrá elegir, este archivo hereda funciones de Pmenu.
+
+```python
+import os # Importamos la librería os
+from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+
+class WikiMenu(Menu): # Clase para mostrar el menú de webscrapping de una wiki
+    def __init__(self): # Constructor de la clase
+        super().__init__()
+
+    def display_menu(self): # Método para mostrar el menú de webscrapping de una wiki
+        os.system("cls")
+        print("Seleccione una opción para realizar webscrapping de una wiki:\n")
+        print("1. Webscraping de Wiki de Python")
+        print("2. Webscraping de Wiki de Hipopótamos")
+        print("3. Webscraping de Wiki de Historia de la Humanidad")
+        print("4. Volver al menú principal\n")
+```
+
+### *`RetailMenu`*
+Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web de tipo retail y dará algunas opciones predeterminadas las cuales el usuario podrá elegir, este archivo hereda funciones de Pmenu.
+
+```python
+import os # Importamos la librería os
+from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+
+class RetailMenu(Menu): # Clase para mostrar el menú de webscrapping de una página de Retail
+    def __init__(self): # Constructor de la clase
+        super().__init__()
+
+    def display_menu(self): # Método para mostrar el menú de webscrapping de una página de Retail
+        os.system("cls")
+        print("Seleccione una opción para realizar webscrapping de Mercado Libre:\n")
+        print("1. Webscraping de Mercado Libre")
+        print("2. Volver al menú principal\n")
+```
+
+### *`PersonalizedMenu`*
+
+Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web que el usuario escoja y para ello le pedirá la introducción del link de la página la cual desea scrapear, este archivo hereda funciones de Pmenu.
+
+```python
+import os # Importamos la librería os
+from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+
+class PersonalizedMenu(Menu): # Clase para mostrar el menú de webscrapping de una página personalizada
+    def __init__(self): # Constructor de la clase
+        super().__init__()
+
+    def display_menu(self): # Método para mostrar el menú de webscrapping de una página personalizada
+        os.system("cls")
+        print("Seleccione una opción para realizar webscrapping de una página personalizada:\n")
+        print("1. Webscraping de Página Personalizada")
+        print("2. Volver al menú principal\n")
+```
