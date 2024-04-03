@@ -476,4 +476,4 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
         self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
 ```
 
-> :shipit: Diego Alejandro Arévalo Guevara. March 28, 2024.
+> :shipit: Diego Alejandro Arévalo Guevara. April 03, 2024.
