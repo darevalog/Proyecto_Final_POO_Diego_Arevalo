@@ -125,6 +125,16 @@ El contenido y la función de cada módulo son los siguientes:
 ### *`__init__.py`*
 El archivo __init__.py en un módulo de Python es un archivo especial que se utiliza para indicar que el directorio que lo contiene debe ser tratado como un paquete. Estos archivos también pueden contener código Python que se ejecutará cuando el paquete sea importado por primera vez. En este caso el archivo se encuentra vacío.
 
+### *`main.py`*
+Este archivo se utiliza para inicializar y ejecutar una instancia del módulo Controller, el cual controla la ejecución del programa de web scraping.
+
+```python
+from Paquete.Controller import * # Importamos la clase Controller del archivo Controller.py
+
+controller = Controller() # Instancia de la clase Controller
+controller.run() # Llama al método run de la clase Controller
+```
+
 ### *`Controller.py`*
 Este archivo se encarga de importar todos los demás módulos y empaquetarlos para facilitar la interacción del usuario con el archivo main.py.
 
@@ -311,4 +321,157 @@ class PersonalizedMenu(Menu): # Clase para mostrar el menú de webscrapping de u
         print("Seleccione una opción para realizar webscrapping de una página personalizada:\n")
         print("1. Webscraping de Página Personalizada")
         print("2. Volver al menú principal\n")
+```
+
+### *`WebScraper.py`*
+En este archivo se proporcionan funcionalidades básicas para hacer scraping de páginas web, específicamente adaptadas para la página de MercadoLibre en dos versiones diferentes, así como una función más general para cualquier página web. Utiliza las librerías requests para realizar solicitudes HTTP y BeautifulSoup para analizar y extraer datos del HTML de la página.
+
+```python
+import requests # Instalación: pip install requests
+from bs4 import BeautifulSoup # Instalación: pip install beautifulsoup4
+import os # Importamos la librería os
+
+
+class WebScraper: # Clase para hacer scraping de una página web
+    def __init__(self): # Constructor de la clase
+        pass
+        
+    def scrape_website_mle(self, url, filename): # Método para hacer scraping de la página web de MercadoLibre
+        page = requests.get(url) # Hace una petición a la página web
+        content = page.text # Obtiene el contenido de la página web
+
+        soup = BeautifulSoup(content, "lxml") # Crea un objeto BeautifulSoup
+
+        text = soup.find("section", class_="ui-search-results").get_text(   ) # Obtiene el texto de la sección de la página web
+
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write(text) # Escribe el texto en un archivo .txt
+
+    def scrape_website_ml(self, url, filename): # Método para hacer scraping de la página web de MercadoLibre
+        page = requests.get(url) # Hace una petición a la página web
+        content = page.text # Obtiene el contenido de la página web
+
+        soup = BeautifulSoup(content, "lxml") # Crea un objeto BeautifulSoup
+
+        text = soup.find("section", class_="ui-search-results ui-search-results--without-disclaimer").get_text() # Obtiene el texto de la sección de la página web
+
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write(text) # Escribe el texto en un archivo .txt
+
+    def scrape_website(self, url, filename): # Método para hacer scraping de una página web
+        page = requests.get(url) # Hace una petición a la página web
+        content = page.text # Obtiene el contenido de la página web
+
+        soup = BeautifulSoup(content, "lxml") # Crea un objeto BeautifulSoup
+
+        text = soup.find("body").get_text() # Obtiene el texto de la página web
+
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write(text) # Escribe el texto en un archivo .txt
+```
+
+### *`WikiScraper.py`*
+Este archivo define un módulo llamado WikiScraper que hereda del módulo WebScraper. WikiScraper proporciona métodos específicos para hacer scraping de tres wikis diferentes: la wiki de Python, la wiki de Hipopótamos y la wiki de la Historia de la Humanidad. Cada método utiliza el método scrape_website de la clase WebScraper para hacer el scraping de la página web correspondiente y guardar el resultado en un archivo de texto con un nombre específico.
+
+```pytyhon
+from Paquete.WebScraper import * # Importamos la clase WebScraper del archivo WebScraper.py
+
+class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
+    def __init__(self): # Constructor de la clase
+        super().__init__()
+
+    def scrape_python_wiki(self): # Método para hacer scraping de la wiki de Python
+        url = "https://aws.amazon.com/es/what-is/python/" # URL de la wiki de Python
+        filename = "Wiki acerca de Python.txt" # Nombre del archivo de salida
+        self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
+
+    def scrape_hipopotamos_wiki(self): # Método para hacer scraping de la wiki de Hipopótamos
+        url = "https://www.oasysparquetematico.com/hipopotamos/amp/" # URL de la wiki de Hipopótamos
+        filename = "Wiki acerca de Hipopótamos.txt" # Nombre del archivo de salida
+        self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
+
+    def scrape_historia_humanidad_wiki(self): # Método para hacer scraping de la wiki de la Historia de la Humanidad
+        url = "https://es.wikipedia.org/wiki/Historia_de_la_humanidad" # URL de la wiki de la Historia de la Humanidad
+        filename = "Wiki acerca de la historia de la humanidad.txt" # Nombre del archivo de salida
+        self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
+```
+
+### *`RetailScraper.py`*
+Este archivo define un módulo llamado RetailScraper, que también hereda de la clase WebScraper. La clase RetailScraper proporciona métodos específicos para hacer scraping de diferentes páginas de Mercado Libre, cada uno destinado a categorías de productos específicos.
+
+```python
+from Paquete.WebScraper import * # Importamos la clase WebScraper del archivo WebScraper.py
+
+class RetailScraper(WebScraper): # Clase para hacer scraping de una página de Retail
+    def __init__(self): # Constructor de la clase
+        super().__init__()
+
+    def scrape_mercado_libre(self): # Método para hacer scraping de Mercado Libre
+        url = "https://listado.mercadolibre.com.co/supermercado/_Deal_cpg-ofertas_Discount_5-100#DEAL_ID=https://listado.mercadolibre.com.co/supermercado/_Deal_cpg-ofertas_Discount_5-100&S=landingHubsupermercado&V=11&T=CarouselDynamic-home&L=VER-MAS&deal_print_id=fd590720-f172-11ee-a697-af0b16b4eb58&c_id=carouseldynamic-home&c_element_order=undefined&c_campaign=VER-MAS&c_uid=fd590720-f172-11ee-a697-af0b16b4eb58" # URL de la página de Supermercado de Mercado Libre
+        filename = "Supermercado de Mercado Libre.txt" # Nombre del archivo de salida 
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-electrodomesticos_Discount_5-100#deal_print_id=f114a860-f173-11ee-aa91-ad3d36ff2bf5&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=f114a860-f173-11ee-aa91-ad3d36ff2bf5" # URL de la página de Electrodomésticos de Mercado Libre
+        filename = "Electrodomésticos de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/carros.mercadolibre.com.co/" # URL de la página de Carros de Mercado Libre
+        filename = "Carros de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_mle(url, filename) # Llama al método scrape_website_mle de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-hogar_Discount_5-100#deal_print_id=7465c0f0-f174-11ee-b28a-f997347c76a9&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=7465c0f0-f174-11ee-b28a-f997347c76a9" # URL de la página de Hogar y muebles de Mercado Libre
+        filename = "Hogar y muebles de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-deportes_Discount_5-100#deal_print_id=acff7ff0-f174-11ee-8807-49fb07fef16a&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=acff7ff0-f174-11ee-8807-49fb07fef16a" # URL de la página de Deportes y fitness de Mercado Libre
+        filename = "Deportes y fitness de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_flagship-belleza#deal_print_id=c445c070-f174-11ee-8807-49fb07fef16a&c_id=header-normal&c_element_order=1&c_campaign=HEADER&c_uid=c445c070-f174-11ee-8807-49fb07fef16a" # URL de la página de Belleza y cuidado personal de Mercado Libre
+        filename = "Belleza y cuidado personal de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-acc-vehiculos_Discount_5-100#deal_print_id=f6b54800-f174-11ee-a7aa-3d3b4f79cb59&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=f6b54800-f174-11ee-a7aa-3d3b4f79cb59" # URL de la página de Accesorios para vehículos de Mercado Libre
+        filename = "Accesorios para vehículos de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-herramientas_Discount_5-100#deal_print_id=140e4050-f175-11ee-aa91-ad3d36ff2bf5&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=140e4050-f175-11ee-aa91-ad3d36ff2bf5" # URL de la página de Herramientas de Mercado Libre
+        filename = "Herramientas de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/construccion/_Deal_promociones-colombia_Discount_5-100#deal_print_id=30633620-f175-11ee-a697-af0b16b4eb58&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=30633620-f175-11ee-a697-af0b16b4eb58" # URL de la página de Construcción de Mercado Libre
+        filename = "Construcción de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/inmuebles/apartamentos/venta/" # URL de la página de Apartamentos en venta de Mercado Libre
+        filename = "Apartamentos en venta de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_mle(url, filename) # Llama al método scrape_website_mle de la clase WebScraper 
+
+        url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-juguetes_Discount_5-100#deal_print_id=2ac60700-f176-11ee-aa91-ad3d36ff2bf5&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=2ac60700-f176-11ee-aa91-ad3d36ff2bf5" # URL de la página de Juguetes de Mercado Libre
+        filename = "Juguetes de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml
+
+        url = "https://listado.mercadolibre.com.co/_Deal_lunes-bebes-2022#deal_print_id=3e2bd900-f176-11ee-a7aa-3d3b4f79cb59&c_id=header-normal&c_element_order=1&c_campaign=HEADER&c_uid=3e2bd900-f176-11ee-a7aa-3d3b4f79cb59" # URL de la página de Accesorios para bebés de Mercado Libre
+        filename = "Accesorios para bebés de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml
+
+        url = "https://listado.mercadolibre.com.co/_Container_cbt-always-on#DEAL_ID=MCO2638&S=landingHubalways-on-cbt&V=18&T=Button-normal&L=BOTVER-MAS&deal_print_id=e044ffb0-f175-11ee-9de2-dd782d5c452e&c_id=button-normal&c_element_order=1&c_campaign=BOTVER-MAS&c_uid=e044ffb0-f175-11ee-9de2-dd782d5c452e" # URL de la página de Compras internacionales de Mercado Libre
+        filename = "Compras internacionales de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/_Container_moda-mas-venta--fs#deal_print_id=150a3710-f176-11ee-b28a-f997347c76a9&c_id=carousel&c_element_order=1&c_campaign=CARTOP-MAS-VENDIDOS&c_uid=150a3710-f176-11ee-b28a-f997347c76a9" # URL de la página de Moda más vendida de Mercado Libre
+        filename = "Moda más vendida de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/salud-equipamiento-medico/_Tienda_all_BestSellers_YES#deal_print_id=b258f6e0-f195-11ee-9de2-dd782d5c452e&c_id=header-normal&c_element_order=1&c_campaign=SALUD_EQUIPAMIENTO_MEDICO&c_uid=b258f6e0-f195-11ee-9de2-dd782d5c452e" # URL de la página de Salud y equipamiento médico de Mercado Libre
+        filename = "Salud y equipamiento médico de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/industrias-oficinas/equipamiento-oficinas/nuevo/_Tienda_all_BestSellers_YES#deal_print_id=c67b7a40-f176-11ee-b28a-f997347c76a9&c_id=header-normal&c_element_order=1&c_campaign=INDUSTRIAS_OFICINAS&c_uid=c67b7a40-f176-11ee-b28a-f997347c76a9" # URL de la página de Equipamiento de oficinas de Mercado Libre
+        filename = "Equipamiento de oficinas de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
+
+        url = "https://listado.mercadolibre.com.co/servicios.mercadolibre.com.co/#deal_print_id=e006c8c0-f176-11ee-a7aa-3d3b4f79cb59&c_id=header-normal&c_element_order=1&c_campaign=TRACKING&c_uid=e006c8c0-f176-11ee-a7aa-3d3b4f79cb59" # URL de la página de Servicios de Mercado Libre
+        filename = "Servicios de Mercado Libre.txt" # Nombre del archivo de salida
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
 ```
