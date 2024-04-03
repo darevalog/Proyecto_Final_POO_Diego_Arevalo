@@ -2,7 +2,7 @@
 
 ## `1. Analisis del problema`
 
-Se propuso construir una aplicación que emule un un sistema de webs crapping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que querramos scrapear.
+Se propuso construir una aplicación que emule un un sistema de webs scraping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que deseemos scrapear.
 Lo que se buscará hacer es mediante estas bibliotecas y algo de conocimiento de HTML, una vez proporcionado un link, analizar el código fuente de la página para utilizar los identificadores de HTML para requerir todos aquellos objetos con esa misma identificación.
 
 ### *`Biblioteca "requests":`*
