@@ -61,3 +61,61 @@ Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Pr
 ```
 
 La carperta paquete contiene algunos módulos que a su vez contienen clases, las cuales heredad algunos atributos de estos mismo módulos, lo cual se representa de mejor manera en el siguiente diagrama UML: 
+```mermaid
+classDiagram
+    Main <.. Controler
+    Controler <.. PMenu
+    Controler <.. WebScraper
+    PMenu <|-- WikiMenu
+    PMenu <|-- RetailMenu
+    PMenu <|-- PersonalizedMenu
+    WebScraper <|-- WikiScraper
+    WebScraper <|-- RetailScraper
+    class Controler{
+      +self
+      +__init__(self)
+      +run(self)
+    }
+    class PMenu{
+        +self
+        +__init__(self)
+        +display_menu(self)
+        +get_option(self)
+    }
+    class WikiMenu{
+        +self
+        +super().__init__()
+        +display_menu(self)
+    }
+    class RetailMenu{
+        +self
+        +super().__init__()
+        +display_menu(self)
+    }
+    class PersonalizedMenu{
+        +self
+        +super().__init__()
+        +display_menu(self)
+    }
+    class WebScraper{
+        +self
+        +url
+        +filename
+        +__init__(self)
+        +scrape_website_mle(self, url, filename)
+        +scrape_website_ml(self, url, filename)
+        +scrape_website(self, url, filename)
+    }
+    class WikiScraper{
+        +self
+        +super().__init__()
+        +scrape_python_wiki(self)
+        +scrape_hipopotamos_wiki(self)
+        +scrape_historia_humanidad_wiki(self)
+    }
+    class RetailScraper{
+        +self
+        +super().__init__()
+        +scrape_mercado_libre(self)
+    }
+```
