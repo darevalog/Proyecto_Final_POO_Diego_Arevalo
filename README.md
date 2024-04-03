@@ -59,3 +59,5 @@ Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Pr
 │   └── WikiScraper.py
 └── main.py
 ```
+
+La carperta paquete contiene algunos módulos que a su vez contienen clases, las cuales heredad algunos atributos de estos mismo módulos, lo cual se representa de mejor manera en el siguiente diagrama UML: 
