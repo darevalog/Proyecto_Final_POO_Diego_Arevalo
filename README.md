@@ -1,8 +1,9 @@
 # Proyecto Final POO (Webscraping) // Diego Arévalo
 
-## `1. Manejo del problema`
+## `1. Analisis del problema`
 
-Se propuso construir una aplicación que emule un un sistema de webscrapping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que querramos scrapear. 
+Se propuso construir una aplicación que emule un un sistema de webscrapping utilizando Python, por lo cual vamos a iniciar hablando acerca de algunas bibliotecas que serán necesarias para hacer peticiones a las páginas web que querramos scrapear.
+Lo que se buscará hacer es mediante algunas bibliotecas y algo de conocimiento de HTML, una vez proporcionado un link, analizar el código fuente de la página para utilizar los identificadores de HTML para requerir todos aquellos objetos con esa misma identificación.
 
 ### *`Biblioteca "requests":`*
 Es una biblioteca de software libre que permite realizar solicitudes HTTP de manera sencilla y eficiente. Con esta biblioteca, puedes enviar solicitudes a servidores web y recibir respuestas. Es ampliamente utilizada en el desarrollo web y en tareas de scraping (extracción de datos de sitios web), así como en aplicaciones que requieren comunicación con servidores a través de HTTP. 
@@ -41,6 +42,7 @@ Además de instalar la librería, es posible que también necesites instalar un 
 pip install lxml
 ```
 
+## `2. Manejo del problema`
 Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Proyecto_Final_POO" la cual alojará todos nuestros archivos y estará compuesta de la siguiente manera:
 
 ```
