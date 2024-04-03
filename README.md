@@ -233,7 +233,7 @@ class Controller: # Clase para controlar el flujo de la aplicación
                 os.system("pause")
                 os.system("cls")
 ```
-### *`PMenu.py*
+### *`PMenu.py`*
 Este archivo se encarga de la creación del menú inicial con el cual el usuario va a interactuar, ademas crea algunas funciones que luego serán heredadas por WikiMenu, RetailMenu y PersonalizedMenu.
 ```python
 import os # Importamos la librería os
