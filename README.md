@@ -57,7 +57,7 @@ Una vez que tengas Colorama instalado, puedes comenzar a usarlo en tu código Py
 import colorama
 ```
 
-O aplicando a las buenas prácticas considerando que no utilizaremos todas las librerias de la bilioteca, haremos la importación de la siguiente manera: 
+O recurriendo a las buenas prácticas considerando que no utilizaremos todas las librerias de la bilioteca, haremos la importación de la siguiente manera: 
 
 ```python
 from colorama import Fore, Style
