@@ -357,7 +357,8 @@ class WebScraper: # Clase para hacer scraping de una página web
         text = soup.find("body").get_text() # Obtiene el texto de la página web
 
         with open(filename, "w", encoding="utf-8") as file:
-            file.write(text) # Escribe el texto en un archivo .txt```
+            file.write(text) # Escribe el texto en un archivo .txt
+```
 
 ### *`WikiScraper.py`*
 Este archivo define un módulo llamado WikiScraper que hereda del módulo WebScraper. WikiScraper proporciona métodos específicos para hacer scraping de tres wikis diferentes: la wiki de Python, la wiki de Hipopótamos y la wiki de la Historia de la Humanidad. Cada método utiliza el método scrape_website de la clase WebScraper para hacer el scraping de la página web correspondiente y guardar el resultado en un archivo de texto con un nombre específico.
