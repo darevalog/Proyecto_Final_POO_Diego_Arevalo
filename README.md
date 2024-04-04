@@ -241,12 +241,17 @@ class Controller: # Clase para controlar el flujo de la aplicación
 
                     if option == "1": # Si la opción es 1, se hará scraping de una página personalizada
                         os.system("cls")
-                        url = input(Fore.CYAN + "Ingrese la URL de la página: " + Style.RESET_ALL) # Se le pedirá al usuario que ingrese la URL de la página
-                        os.system("cls")
-                        self.wiki_scraper.scrape_website(url, "Página Personalizada.txt") # Se hará scraping de la página personalizada
-                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la página personalizada.\n" + Style.RESET_ALL) # Se mostrará un mensaje
-                        os.system("pause")
-                        os.system("cls")
+                        try:
+                            url = input(Fore.CYAN + "Ingrese la URL de la página: " + Style.RESET_ALL) # Se le pedirá al usuario que ingrese la URL de la página
+                            os.system("cls")
+                            self.wiki_scraper.scrape_website(url, "Página Personalizada.txt") # Se hará scraping de la página personalizada
+                            print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la página personalizada.\n" + Style.RESET_ALL) # Se mostrará un mensaje
+                            os.system("pause")
+                            os.system("cls")
+                        except:
+                            print(Fore.RED + "Ha ocurrido un error. Intente de nuevo.\n" + Style.RESET_ALL) # Si ocurre un error, se mostrará un mensaje
+                            os.system("pause")
+                            os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
                         break
                     else:
