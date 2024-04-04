@@ -285,7 +285,7 @@ class WikiMenu(Menu): # Clase para mostrar el menú de webscrapping de una wiki
         print("4. Volver al menú principal\n")
 ```
 
-### *`RetailMenu`*
+### *`RetailMenu.py`*
 Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web de tipo retail y dará algunas opciones predeterminadas las cuales el usuario podrá elegir, este archivo hereda funciones de Pmenu.
 
 ```python
@@ -303,7 +303,7 @@ class RetailMenu(Menu): # Clase para mostrar el menú de webscrapping de una pá
         print("2. Volver al menú principal\n")
 ```
 
-### *`PersonalizedMenu`*
+### *`PersonalizedMenu.py`*
 
 Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web que el usuario escoja y para ello le pedirá la introducción del link de la página la cual desea scrapear, este archivo hereda funciones de Pmenu.
 
@@ -407,7 +407,7 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
 
         url = "https://listado.mercadolibre.com.co/carros.mercadolibre.com.co/" # URL de la página de Carros de Mercado Libre
         filename = "Carros de Mercado Libre.txt" # Nombre del archivo de salida
-        self.scrape_website_mle(url, filename) # Llama al método scrape_website_mle de la clase WebScraper
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_mle de la clase WebScraper
 
         url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-hogar_Discount_5-100#deal_print_id=7465c0f0-f174-11ee-b28a-f997347c76a9&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=7465c0f0-f174-11ee-b28a-f997347c76a9" # URL de la página de Hogar y muebles de Mercado Libre
         filename = "Hogar y muebles de Mercado Libre.txt" # Nombre del archivo de salida
@@ -435,7 +435,7 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
 
         url = "https://listado.mercadolibre.com.co/inmuebles/apartamentos/venta/" # URL de la página de Apartamentos en venta de Mercado Libre
         filename = "Apartamentos en venta de Mercado Libre.txt" # Nombre del archivo de salida
-        self.scrape_website_mle(url, filename) # Llama al método scrape_website_mle de la clase WebScraper 
+        self.scrape_website_ml(url, filename) # Llama al método scrape_website_mle de la clase WebScraper 
 
         url = "https://listado.mercadolibre.com.co/_Deal_promociones-colombia-juguetes_Discount_5-100#deal_print_id=2ac60700-f176-11ee-aa91-ad3d36ff2bf5&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=2ac60700-f176-11ee-aa91-ad3d36ff2bf5" # URL de la página de Juguetes de Mercado Libre
         filename = "Juguetes de Mercado Libre.txt" # Nombre del archivo de salida
