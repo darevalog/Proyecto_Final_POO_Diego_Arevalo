@@ -42,6 +42,21 @@ Además de instalar la librería, es posible que también necesites instalar un 
 pip install lxml
 ```
 
+### *`Biblioteca "colorama":`*
+Es una biblioteca de Python que se utiliza para hacer que la impresión en la consola sea más colorida y más fácil de leer. Permite imprimir texto en la consola con diferentes colores, estilos y fondos, lo que puede ser útil para resaltar cierta información o mejorar la presentación de la salida en la consola.
+
+Para usar Colorama, primero debes instalarlo. Puedes hacerlo fácilmente utilizando pip, el gestor de paquetes de Python. Si aún no tienes instalado Colorama, puedes instalarlo ejecutando el siguiente comando en tu terminal o símbolo del sistema:
+
+```python
+pip install colorama
+```
+
+Una vez que tengas Colorama instalado, puedes comenzar a usarlo en tu código Python importándolo:
+
+```python
+import colorama
+```
+
 ## `2. Manejo del problema`
 Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Proyecto_Final_POO" la cual alojará todos nuestros archivos y estará compuesta de la siguiente manera:
 
