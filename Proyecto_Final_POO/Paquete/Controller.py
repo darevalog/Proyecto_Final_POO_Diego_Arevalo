@@ -31,26 +31,26 @@ class Controller: # Clase para controlar el flujo de la aplicación
                     if option == "1": # Si la opción es 1, se hará scraping de la wiki de Python
                         os.system("cls")
                         self.wiki_scraper.scrape_python_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de Python.\n") 
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de Python.\n" + Style.RESET_ALL) 
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, se hará scraping de la wiki de Hipopótamos
                         os.system("cls")
                         self.wiki_scraper.scrape_hipopotamos_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de Hipopótamos.\n")
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de Hipopótamos.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "3": # Si la opción es 3, se hará scraping de la wiki de la Historia de la Humanidad
                         os.system("cls")
                         self.wiki_scraper.scrape_historia_humanidad_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de la Historia de la Humanidad.\n")
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de la Historia de la Humanidad.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "4": # Si la opción es 4, se regresará al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "2": # Si la opción es 2, se hará scraping páginas de retail
@@ -62,14 +62,14 @@ class Controller: # Clase para controlar el flujo de la aplicación
                     if option == "1": # Si la opción es 1, se hará scraping de Mercado Libre
                         os.system("cls")
                         self.retail_scraper.scrape_mercado_libre()
-                        print("Se han creado varios archivos .txt acerca de productos de Mercado Libre.\n")
+                        print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de Mercado Libre.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "3": # Si la opción es 3, se hará scraping de una página personalizada
@@ -80,17 +80,17 @@ class Controller: # Clase para controlar el flujo de la aplicación
 
                     if option == "1": # Si la opción es 1, se hará scraping de una página personalizada
                         os.system("cls")
-                        url = input("Ingrese la URL de la página: ") # Se le pedirá al usuario que ingrese la URL de la página
+                        url = input(Fore.CYAN + "Ingrese la URL de la página: " + Style.RESET_ALL) # Se le pedirá al usuario que ingrese la URL de la página
                         os.system("cls")
                         self.wiki_scraper.scrape_website(url, "Página Personalizada.txt") # Se hará scraping de la página personalizada
-                        print("Se ha creado un archivo .txt acerca de la página personalizada.\n") # Se mostrará un mensaje
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la página personalizada.\n" + Style.RESET_ALL) # Se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "4": # Si la opción es 4, se cerrará la aplicación
@@ -98,6 +98,6 @@ class Controller: # Clase para controlar el flujo de la aplicación
                 break
             else:
                 os.system("cls")
-                print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                 os.system("pause")
                 os.system("cls")

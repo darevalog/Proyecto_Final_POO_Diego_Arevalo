@@ -7,8 +7,8 @@ class WikiMenu(Menu):
 
     def display_menu(self):
         os.system("cls")
-        print("Seleccione una opción para realizar webscrapping de una wiki:\n")
-        print("1. Webscraping de Wiki de Python")
-        print("2. Webscraping de Wiki de Hipopótamos")
-        print("3. Webscraping de Wiki de Historia de la Humanidad")
-        print("4. Volver al menú principal\n")
+        print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de una wiki:\n")
+        print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Wiki de Python")
+        print(Fore.GREEN + "2." + Fore.YELLOW + " Webscraping de Wiki de Hipopótamos")
+        print(Fore.GREEN + "3." + Fore.YELLOW + " Webscraping de Wiki de Historia de la Humanidad")
+        print(Fore.GREEN + "4." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)

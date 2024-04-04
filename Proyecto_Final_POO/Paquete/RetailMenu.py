@@ -7,6 +7,6 @@ class RetailMenu(Menu): # Clase para mostrar el menú de webscrapping de una pá
 
     def display_menu(self): # Método para mostrar el menú de webscrapping de una página de Retail
         os.system("cls")
-        print("Seleccione una opción para realizar webscrapping de Mercado Libre:\n")
-        print("1. Webscraping de Mercado Libre")
-        print("2. Volver al menú principal\n")
+        print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de Mercado Libre:\n")
+        print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Mercado Libre")
+        print(Fore.GREEN + "2." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)
