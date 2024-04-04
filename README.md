@@ -186,26 +186,26 @@ class Controller: # Clase para controlar el flujo de la aplicación
                     if option == "1": # Si la opción es 1, se hará scraping de la wiki de Python
                         os.system("cls")
                         self.wiki_scraper.scrape_python_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de Python.\n") 
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de Python.\n" + Style.RESET_ALL) 
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, se hará scraping de la wiki de Hipopótamos
                         os.system("cls")
                         self.wiki_scraper.scrape_hipopotamos_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de Hipopótamos.\n")
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de Hipopótamos.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "3": # Si la opción es 3, se hará scraping de la wiki de la Historia de la Humanidad
                         os.system("cls")
                         self.wiki_scraper.scrape_historia_humanidad_wiki()
-                        print("Se ha creado un archivo .txt acerca de la wiki de la Historia de la Humanidad.\n")
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la wiki de la Historia de la Humanidad.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "4": # Si la opción es 4, se regresará al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "2": # Si la opción es 2, se hará scraping páginas de retail
@@ -217,14 +217,14 @@ class Controller: # Clase para controlar el flujo de la aplicación
                     if option == "1": # Si la opción es 1, se hará scraping de Mercado Libre
                         os.system("cls")
                         self.retail_scraper.scrape_mercado_libre()
-                        print("Se han creado varios archivos .txt acerca de productos de Mercado Libre.\n")
+                        print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de Mercado Libre.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "3": # Si la opción es 3, se hará scraping de una página personalizada
@@ -235,17 +235,17 @@ class Controller: # Clase para controlar el flujo de la aplicación
 
                     if option == "1": # Si la opción es 1, se hará scraping de una página personalizada
                         os.system("cls")
-                        url = input("Ingrese la URL de la página: ") # Se le pedirá al usuario que ingrese la URL de la página
+                        url = input(Fore.CYAN + "Ingrese la URL de la página: " + Style.RESET_ALL) # Se le pedirá al usuario que ingrese la URL de la página
                         os.system("cls")
                         self.wiki_scraper.scrape_website(url, "Página Personalizada.txt") # Se hará scraping de la página personalizada
-                        print("Se ha creado un archivo .txt acerca de la página personalizada.\n") # Se mostrará un mensaje
+                        print(Fore.GREEN + "Se ha creado un archivo .txt acerca de la página personalizada.\n" + Style.RESET_ALL) # Se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
                         break
                     else:
                         os.system("cls")
-                        print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                        print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                         os.system("pause")
                         os.system("cls")
             elif option == "4": # Si la opción es 4, se cerrará la aplicación
@@ -253,51 +253,53 @@ class Controller: # Clase para controlar el flujo de la aplicación
                 break
             else:
                 os.system("cls")
-                print("Opción inválida. Intente de nuevo.\n") # Si la opción no es válida, se mostrará un mensaje
+                print(Fore.RED + "Opción inválida. Intente de nuevo.\n" + Style.RESET_ALL) # Si la opción no es válida, se mostrará un mensaje
                 os.system("pause")
                 os.system("cls")
 ```
 ### *`PMenu.py`*
 Este archivo se encarga de la creación del menú inicial con el cual el usuario va a interactuar, ademas crea algunas funciones que luego serán heredadas por WikiMenu, RetailMenu y PersonalizedMenu.
 ```python
-import os # Importamos la librería os
+import os
+from colorama import Fore, Style
 
-class Menu: # Clase para mostrar el menú principal
-    def __init__(self): # Constructor de la clase
+class Menu:
+    def __init__(self):
         self.clear_screen()
 
-    def clear_screen(self): # Método para limpiar la pantalla
+    def clear_screen(self):
         os.system("cls")
 
-    def display_menu(self): # Método para mostrar el menú principal
-        print("-------------- SISTEMA DE WEBSCRAPPING --------------\n")
-        print("1. Webscraping de Wikis predeterminadas.")
-        print("2. Webscraping de páginas de Retail.")
-        print("3. Webscraping de páginas personalizadas.")
-        print("4. Salir\n")
+    def display_menu(self):
+        print(Style.BRIGHT + Fore.MAGENTA + "-------------- SISTEMA DE WEBSCRAPPING --------------" + Style.RESET_ALL)
+        print(Fore.GREEN + "\n1." + Fore.YELLOW + " Webscraping de Wikis predeterminadas.")
+        print(Fore.GREEN + "2." + Fore.YELLOW + " Webscraping de páginas de Retail.")
+        print(Fore.GREEN + "3." + Fore.YELLOW + " Webscraping de páginas personalizadas.")
+        print(Fore.GREEN + "4." + Fore.RED + " Salir\n" + Style.RESET_ALL)
 
-    def get_option(self): # Método para obtener la opción seleccionada por el usuario
-        return input("Ingrese una opción: ")
+    def get_option(self):
+        return input(Fore.CYAN + "Ingrese una opción: " + Style.RESET_ALL)
+
 ```
 
 ### *`WikiMenu.py`*
 Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web de tipo wiki y dará algunas opciones predeterminadas las cuales el usuario podrá elegir, este archivo hereda funciones de Pmenu.
 
 ```python
-import os # Importamos la librería os
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+import os
+from Paquete.PMenu import *
 
-class WikiMenu(Menu): # Clase para mostrar el menú de webscrapping de una wiki
-    def __init__(self): # Constructor de la clase
+class WikiMenu(Menu):
+    def __init__(self):
         super().__init__()
 
-    def display_menu(self): # Método para mostrar el menú de webscrapping de una wiki
+    def display_menu(self):
         os.system("cls")
-        print("Seleccione una opción para realizar webscrapping de una wiki:\n")
-        print("1. Webscraping de Wiki de Python")
-        print("2. Webscraping de Wiki de Hipopótamos")
-        print("3. Webscraping de Wiki de Historia de la Humanidad")
-        print("4. Volver al menú principal\n")
+        print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de una wiki:\n")
+        print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Wiki de Python")
+        print(Fore.GREEN + "2." + Fore.YELLOW + " Webscraping de Wiki de Hipopótamos")
+        print(Fore.GREEN + "3." + Fore.YELLOW + " Webscraping de Wiki de Historia de la Humanidad")
+        print(Fore.GREEN + "4." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)
 ```
 
 ### *`RetailMenu.py`*
@@ -313,9 +315,9 @@ class RetailMenu(Menu): # Clase para mostrar el menú de webscrapping de una pá
 
     def display_menu(self): # Método para mostrar el menú de webscrapping de una página de Retail
         os.system("cls")
-        print("Seleccione una opción para realizar webscrapping de Mercado Libre:\n")
-        print("1. Webscraping de Mercado Libre")
-        print("2. Volver al menú principal\n")
+        print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de Mercado Libre:\n")
+        print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Mercado Libre")
+        print(Fore.GREEN + "2." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)
 ```
 
 ### *`PersonalizedMenu.py`*
@@ -332,9 +334,9 @@ class PersonalizedMenu(Menu): # Clase para mostrar el menú de webscrapping de u
 
     def display_menu(self): # Método para mostrar el menú de webscrapping de una página personalizada
         os.system("cls")
-        print("Seleccione una opción para realizar webscrapping de una página personalizada:\n")
-        print("1. Webscraping de Página Personalizada")
-        print("2. Volver al menú principal\n")
+        print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de una página personalizada:\n")
+        print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Página Personalizada")
+        print(Fore.GREEN + "2." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)
 ```
 
 ### *`WebScraper.py`*
