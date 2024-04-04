@@ -102,7 +102,6 @@ classDiagram
         +url
         +filename
         +__init__(self)
-        +scrape_website_mle(self, url, filename)
         +scrape_website_ml(self, url, filename)
         +scrape_website(self, url, filename)
     }
