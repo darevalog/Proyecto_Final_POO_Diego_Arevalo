@@ -57,6 +57,12 @@ Una vez que tengas Colorama instalado, puedes comenzar a usarlo en tu código Py
 import colorama
 ```
 
+O aplicando a las buenas prácticas considerando que no utilizaremos todas las librerias de la bilioteca, haremos la importación de la siguiente manera: 
+
+```python
+from colorama import Fore, Style
+```
+
 ## `2. Manejo del problema`
 Una vez que hayamos instalado estas bibliotecas crearemos una carpeta llamda "Proyecto_Final_POO" la cual alojará todos nuestros archivos y estará compuesta de la siguiente manera:
 
