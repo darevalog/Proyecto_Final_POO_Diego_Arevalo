@@ -433,7 +433,7 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
         filename = "Electrodomésticos de Mercado Libre.txt" # Nombre del archivo de salida
         self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
 
-        url = "https://listado.mercadolibre.com.co/carros.mercadolibre.com.co/" # URL de la página de Carros de Mercado Libre
+        url = "https://carros.mercadolibre.com.co/" # URL de la página de Carros de Mercado Libre
         filename = "Carros de Mercado Libre.txt" # Nombre del archivo de salida
         self.scrape_website_ml(url, filename) # Llama al método scrape_website_mle de la clase WebScraper
 
