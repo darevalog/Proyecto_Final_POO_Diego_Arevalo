@@ -289,7 +289,14 @@ class Menu:
         print(Fore.GREEN + "4." + Fore.RED + " Salir\n" + Style.RESET_ALL)
 
     def get_option(self):
-        return input(Fore.CYAN + "Ingrese una opción: " + Style.RESET_ALL)
+        try:
+            return input(Fore.CYAN + "Ingrese una opción: " + Style.RESET_ALL) # Se solicita al usuario que ingrese una opción
+        except ValueError: # En caso de que el usuario ingrese un valor no numérico
+            print(Fore.RED + "Por favor, ingrese un número válido." + Style.RESET_ALL)
+        except KeyboardInterrupt: # En caso de que el usuario interrumpa el programa
+            print(Fore.RED + "Por favor, ingrese un número válido." + Style.RESET_ALL)
+        except EOFError: # En caso de que el usuario interrumpa el programa
+            print(Fore.RED + "Por favor, ingrese un número válido." + Style.RESET_ALL)
 
 ```
 
