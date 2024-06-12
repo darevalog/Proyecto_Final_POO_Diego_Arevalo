@@ -495,10 +495,6 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
         url = "https://listado.mercadolibre.com.co/industrias-oficinas/equipamiento-oficinas/nuevo/_Tienda_all_BestSellers_YES#deal_print_id=c67b7a40-f176-11ee-b28a-f997347c76a9&c_id=header-normal&c_element_order=1&c_campaign=INDUSTRIAS_OFICINAS&c_uid=c67b7a40-f176-11ee-b28a-f997347c76a9" # URL de la página de Equipamiento de oficinas de Mercado Libre
         filename = "Equipamiento de oficinas de Mercado Libre.txt" # Nombre del archivo de salida
         self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
-
-        url = "https://listado.mercadolibre.com.co/servicios.mercadolibre.com.co/#deal_print_id=e006c8c0-f176-11ee-a7aa-3d3b4f79cb59&c_id=header-normal&c_element_order=1&c_campaign=TRACKING&c_uid=e006c8c0-f176-11ee-a7aa-3d3b4f79cb59" # URL de la página de Servicios de Mercado Libre
-        filename = "Servicios de Mercado Libre.txt" # Nombre del archivo de salida
-        self.scrape_website_ml(url, filename) # Llama al método scrape_website_ml de la clase WebScraper
 ```
 
 > :shipit: Diego Alejandro Arévalo Guevara. April 03, 2024.
