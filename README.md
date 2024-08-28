@@ -377,7 +377,7 @@ class WebScraper: # Clase para hacer scraping de una página web
             html_text = response.text # Obtiene el contenido HTML de la página
             soup = BeautifulSoup(html_text, 'lxml') # Crea un objeto BeautifulSoup
 
-            products = soup.find_all('div', class_='ui-search-result__content-wrapper')  # Encuentra todos los productos en la página
+            products = soup.find_all('div', class_='poly-card__content')  # Encuentra todos los productos en la página
 
             with open(filename, 'a', encoding='utf-8') as file: # Abrir el archivo en modo de escritura
                 for product in products: # Intentar obtener el precio y nombre del producto       
@@ -387,7 +387,7 @@ class WebScraper: # Clase para hacer scraping de una página web
                         product_price = 'Precio no disponible'
                     
                     try:
-                        product_name = product.find('h2', class_='ui-search-item__title').text.strip()  
+                        product_name = product.find('h2', class_='poly-box').text.strip()  
                     except AttributeError:
                         product_name = 'Nombre no disponible'
                     
@@ -452,7 +452,6 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
 
     def scrape_mercado_libre(self): # Método para hacer scraping de Mercado Libre
         urls_and_filenames = [
-    ("https://listado.mercadolibre.com.co/supermercado/_Deal_cpg-ofertas_Discount_5-100#DEAL_ID=https://listado.mercadolibre.com.co/supermercado/_Deal_cpg-ofertas_Discount_5-100&S=landingHubsupermercado&V=11&T=CarouselDynamic-home&L=VER-MAS&deal_print_id=fd590720-f172-11ee-a697-af0b16b4eb58&c_id=carouseldynamic-home&c_element_order=undefined&c_campaign=VER-MAS&c_uid=fd590720-f172-11ee-a697-af0b16b4eb58", 'Supermercado_de_Mercado_Libre.txt'),
     ("https://listado.mercadolibre.com.co/_Deal_promociones-colombia-electrodomesticos_Discount_5-100#deal_print_id=f114a860-f173-11ee-aa91-ad3d36ff2bf5&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=f114a860-f173-11ee-aa91-ad3d36ff2bf5", 'Electrodomésticos_de_Mercado_Libre.txt'),
     ("https://carros.mercadolibre.com.co/", 'Carros_de_Mercado_Libre.txt'),
     ("https://listado.mercadolibre.com.co/_Deal_promociones-colombia-hogar_Discount_5-100#deal_print_id=7465c0f0-f174-11ee-b28a-f997347c76a9&c_id=carousel&c_element_order=1&c_campaign=OFERTAS-IMPERDIBLES&c_uid=7465c0f0-f174-11ee-b28a-f997347c76a9", 'Hogar_y_muebles_de_Mercado_Libre.txt'),
@@ -470,9 +469,9 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
     ("https://listado.mercadolibre.com.co/industrias-oficinas/equipamiento-oficinas/nuevo/_Tienda_all_BestSellers_YES#deal_print_id=c67b7a40-f176-11ee-b28a-f997347c76a9&c_id=header-normal&c_element_order=1&c_campaign=INDUSTRIAS_OFICINAS&c_uid=c67b7a40-f176-11ee-b28a-f997347c76a9", 'Equipamiento_de_oficinas_de_Mercado_Libre.txt')
 ]
 
-# Iterar sobre cada URL y archivo
-        for url, filename in urls_and_filenames:
+        for url, filename in urls_and_filenames: # Iterar sobre cada URL y archivo
             self.scrape_website_ml(url, filename)
+
 ```
 
 > :shipit: Diego Alejandro Arévalo Guevara. April 03, 2024.
