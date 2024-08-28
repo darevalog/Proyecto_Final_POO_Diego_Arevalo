@@ -7,18 +7,37 @@ class WebScraper: # Clase para hacer scraping de una página web
     def __init__(self): # Constructor de la clase
         pass
         
-    def scrape_website_ml(self, url, filename): # Método para hacer scraping de una página web de Mercado Libre
-        html_text = requests.get(url).text # Hace una petición a la página web y obtiene el contenido de la página web
-        soup = BeautifulSoup(html_text, 'lxml') # Crea un objeto BeautifulSoup
-        products = soup.find_all('div', class_='ui-search-result__content-wrapper') # Obtiene todos los productos de la página web
+    def scrape_website_ml(self, url, filename):
+        try:
+            response = requests.get(url) # Hacer la petición y parsear el contenido HTML
+            response.raise_for_status()  # Lanza una excepción para errores HTTP
+            html_text = response.text # Obtiene el contenido HTML de la página
+            soup = BeautifulSoup(html_text, 'lxml') # Crea un objeto BeautifulSoup
 
-        for product in products: # Recorre todos los productos de la página web
-            product_price = product.find('span', class_='andes-money-amount__fraction').text # Obtiene el precio del producto
-            product_name = product.find('h2', class_='ui-search-item__title').text # Obtiene el nombre del producto
+            products = soup.find_all('div', class_='poly-card__content')  # Encuentra todos los productos en la página
 
-            text = product_name + " - " + "$ " + product_price + "\n" # Concatena el nombre y el precio del producto
-            with open(filename, 'a', encoding='utf-8') as file: # Abre el archivo .txt en modo de escritura
-                file.write(text) # Escribe el texto en el archivo .txt
+            with open(filename, 'a', encoding='utf-8') as file: # Abrir el archivo en modo de escritura
+                for product in products: # Intentar obtener el precio y nombre del producto       
+                    try:
+                        product_price = product.find('span', class_='andes-money-amount__fraction').text.strip()  
+                    except AttributeError:
+                        product_price = 'Precio no disponible'
+                    
+                    try:
+                        product_name = product.find('h2', class_='poly-box').text.strip()  
+                    except AttributeError:
+                        product_name = 'Nombre no disponible'
+                    
+                    text = f"{product_name} - $ {product_price}\n" # Crear la línea de texto para el archivo
+                      
+                    file.write(text) # Escribir la línea en el archivo
+                    
+            print(f"Datos guardados en {filename}")
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error en la solicitud: {e}")
+        except IOError as e:
+            print(f"Error al escribir en el archivo: {e}")
                 
     def scrape_website(self, url, filename): # Método para hacer scraping de una página web
         page = requests.get(url) # Hace una petición a la página web

@@ -62,6 +62,7 @@ class Controller: # Clase para controlar el flujo de la aplicación
                     if option == "1": # Si la opción es 1, se hará scraping de Mercado Libre
                         os.system("cls")
                         self.retail_scraper.scrape_mercado_libre()
+                        print("")
                         print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de Mercado Libre.\n" + Style.RESET_ALL)
                         os.system("pause")
                         os.system("cls")

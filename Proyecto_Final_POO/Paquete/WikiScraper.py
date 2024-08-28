@@ -10,7 +10,7 @@ class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
         self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
 
     def scrape_hipopotamos_wiki(self): # Método para hacer scraping de la wiki de Hipopótamos
-        url = "https://www.oasysparquetematico.com/hipopotamos/amp/" # URL de la wiki de Hipopótamos
+        url = "https://www.nationalgeographic.es/animales/hipopotamo" # URL de la wiki de Hipopótamos
         filename = "Wiki acerca de Hipopótamos.txt" # Nombre del archivo de salida
         self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
 
