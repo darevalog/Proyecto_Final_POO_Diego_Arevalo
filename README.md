@@ -1,4 +1,4 @@
-# Proyecto Final POO (Web scraping) // Diego Arévalo
+# Web scraping (Proyecto Final POO) // Diego Arévalo
 
 ## `1. Analisis del problema`
 
