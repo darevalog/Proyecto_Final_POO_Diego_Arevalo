@@ -67,6 +67,27 @@ class Controller: # Clase para controlar el flujo de la aplicación
                         os.system("pause")
                         os.system("cls")
                     elif option == "2": # Si la opción es 2, volverá al menú principal
+                        os.system("cls")
+                        self.retail_scraper.scrape_exito()
+                        print("")
+                        print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de tiendas Exito.\n" + Style.RESET_ALL)
+                        os.system("pause")
+                        os.system("cls")
+                    elif option == "3":
+                        os.system("cls")
+                        self.retail_scraper.scrape_alkosto()
+                        print("")
+                        print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de tiendas Alkosto.\n" + Style.RESET_ALL)
+                        os.system("pause")
+                        os.system("cls")
+                    elif option == "4":
+                        os.system("cls")
+                        self.retail_scraper.scrape_jumbo()
+                        print("")
+                        print(Fore.GREEN + "Se han creado varios archivos .txt acerca de productos de tiendas Jumbo.\n" + Style.RESET_ALL)
+                        os.system("pause")
+                        os.system("cls")
+                    elif option == "5": # Si la opción es 5, volverá al menú principal
                         break
                     else:
                         os.system("cls")

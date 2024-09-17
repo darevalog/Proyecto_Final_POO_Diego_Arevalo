@@ -25,3 +25,27 @@ class RetailScraper(WebScraper): # Clase para hacer scraping de una página de R
 
         for url, filename in urls_and_filenames: # Iterar sobre cada URL y archivo
             self.scrape_website_ml(url, filename)
+
+    def scrape_exito(self): # Método para hacer scraping de Éxito
+        urls_and_filenames = [
+    ("https://www.exito.com/mercado/aseo-del-hogar", 'Productos_Supermercado_de_Exito.txt'),
+]
+
+        for url, filename in urls_and_filenames:
+            self.scrape_website_ex(url, filename)
+
+    def scrape_alkosto(self): # Método para hacer scraping de Falabella
+        urls_and_filenames = [
+    ("https://www.alkosto.com/computadores-tablet/c/BI_COMP_ALKOS", 'Computadores_y_Tablets_de_Alkosto.txt'),
+]
+
+        for url, filename in urls_and_filenames:
+            self.scrape_website_alk(url, filename)
+        
+    def scrape_jumbo(self): # Método para hacer scraping de Jumbo
+        urls_and_filenames = [
+    ("https://www.tiendasjumbo.co/tecnologia/informatica?layout=list", 'Tecnología_de_Jumbo.txt')
+]
+
+        for url, filename in urls_and_filenames:
+            self.scrape_website_jm(url, filename)
