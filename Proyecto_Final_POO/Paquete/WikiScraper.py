@@ -1,4 +1,4 @@
-from Paquete.WebScraper import * # Importamos la clase WebScraper del archivo WebScraper.py
+from Paquete.WebScraper import WebScraper # Importamos la clase WebScraper del archivo WebScraper.py
 
 class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
     def __init__(self): # Constructor de la clase

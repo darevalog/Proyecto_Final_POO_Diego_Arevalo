@@ -1,9 +1,11 @@
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
-from Paquete.WikiScraper import * # Importamos la clase WikiScraper del archivo WikiScraper.py
-from Paquete.RetailScraper import * # Importamos la clase RetailScraper del archivo RetailScraper.py
-from Paquete.WikiMenu import * # Importamos la clase WikiMenu del archivo WikiMenu.py
-from Paquete.RetailMenu import * # Importamos la clase RetailMenu del archivo RetailMenu.py
-from Paquete.PersonalizedMenu import * # Importamos la clase PersonalizedMenu del archivo PersonalizedMenu.py
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
+from Paquete.WikiScraper import WikiScraper # Importamos la clase WikiScraper del archivo WikiScraper.py
+from Paquete.RetailScraper import RetailScraper # Importamos la clase RetailScraper del archivo RetailScraper.py
+from Paquete.WikiMenu import WikiMenu # Importamos la clase WikiMenu del archivo WikiMenu.py
+from Paquete.RetailMenu import RetailMenu # Importamos la clase RetailMenu del archivo RetailMenu.py
+from Paquete.PersonalizedMenu import PersonalizedMenu # Importamos la clase PersonalizedMenu del archivo PersonalizedMenu.py
+import os # Importamos la librería os
+from colorama import Fore, Style # Importamos las clases Fore y Style de la librería colorama
 
 
 class Controller: # Clase para controlar el flujo de la aplicación

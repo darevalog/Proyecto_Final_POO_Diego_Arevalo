@@ -1,5 +1,6 @@
 import os # Importamos la librería os
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
+from colorama import Fore, Style # Importamos las clases Fore y Style de la librería colorama
 
 class PersonalizedMenu(Menu): # Clase para mostrar el menú de webscrapping de una página personalizada
     def __init__(self): # Constructor de la clase
