@@ -149,7 +149,7 @@ El archivo __init__.py en un módulo de Python es un archivo especial que se uti
 Este archivo se utiliza para inicializar y ejecutar una instancia del módulo Controller, el cual controla la ejecución del programa de web scraping.
 
 ```python
-from Paquete.Controller import * # Importamos la clase Controller del archivo Controller.py
+from Paquete.Controller import Controller # Importamos la clase Controller del archivo Controller.py
 
 controller = Controller() # Instancia de la clase Controller
 controller.run() # Llama al método run de la clase Controller
@@ -159,12 +159,14 @@ controller.run() # Llama al método run de la clase Controller
 Este archivo se encarga de importar todos los demás módulos y empaquetarlos para facilitar la interacción del usuario con el archivo main.py.
 
 ```python
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
-from Paquete.WikiScraper import * # Importamos la clase WikiScraper del archivo WikiScraper.py
-from Paquete.RetailScraper import * # Importamos la clase RetailScraper del archivo RetailScraper.py
-from Paquete.WikiMenu import * # Importamos la clase WikiMenu del archivo WikiMenu.py
-from Paquete.RetailMenu import * # Importamos la clase RetailMenu del archivo RetailMenu.py
-from Paquete.PersonalizedMenu import * # Importamos la clase PersonalizedMenu del archivo PersonalizedMenu.py
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
+from Paquete.WikiScraper import WikiScraper # Importamos la clase WikiScraper del archivo WikiScraper.py
+from Paquete.RetailScraper import RetailScraper # Importamos la clase RetailScraper del archivo RetailScraper.py
+from Paquete.WikiMenu import WikiMenu # Importamos la clase WikiMenu del archivo WikiMenu.py
+from Paquete.RetailMenu import RetailMenu # Importamos la clase RetailMenu del archivo RetailMenu.py
+from Paquete.PersonalizedMenu import PersonalizedMenu # Importamos la clase PersonalizedMenu del archivo PersonalizedMenu.py
+import os # Importamos la librería os
+from colorama import Fore, Style # Importamos las clases Fore y Style de la librería colorama
 
 
 class Controller: # Clase para controlar el flujo de la aplicación
@@ -326,20 +328,22 @@ class Menu:
 Este archivo se encarga de la creación del menú de interacción para hacer web scrapin de una web de tipo wiki y dará algunas opciones predeterminadas las cuales el usuario podrá elegir, este archivo hereda funciones de Pmenu.
 
 ```python
-import os
-from Paquete.PMenu import *
+import os # Importamos la librería os
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
+from colorama import Fore, Style # Importamos las clases Fore y Style de la librería colorama
 
-class WikiMenu(Menu):
-    def __init__(self):
-        super().__init__()
+class WikiMenu(Menu): # Clase para mostrar el menú de webscrapping de una wiki
+    def __init__(self): # Constructor de la clase
+        super().__init__() # Llamamos al constructor de la clase padre
 
-    def display_menu(self):
-        os.system("cls")
+    def display_menu(self): # Método para mostrar el menú de webscrapping de una wiki
+        os.system("cls") # Limpia la pantalla
         print(Fore.YELLOW + "Seleccione una opción para realizar webscrapping de una wiki:\n")
         print(Fore.GREEN + "1." + Fore.YELLOW + " Webscraping de Wiki de Python")
         print(Fore.GREEN + "2." + Fore.YELLOW + " Webscraping de Wiki de Hipopótamos")
         print(Fore.GREEN + "3." + Fore.YELLOW + " Webscraping de Wiki de Historia de la Humanidad")
         print(Fore.GREEN + "4." + Fore.RED + " Volver al menú principal\n" + Style.RESET_ALL)
+
 ```
 
 ### *`RetailMenu.py`*
@@ -347,7 +351,7 @@ Este archivo se encarga de la creación del menú de interacción para hacer web
 
 ```python
 import os # Importamos la librería os
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
 
 class RetailMenu(Menu): # Clase para mostrar el menú de webscrapping de una página de Retail
     def __init__(self): # Constructor de la clase
@@ -369,7 +373,8 @@ Este archivo se encarga de la creación del menú de interacción para hacer web
 
 ```python
 import os # Importamos la librería os
-from Paquete.PMenu import * # Importamos la clase Menu del archivo PMenu.py
+from Paquete.PMenu import Menu # Importamos la clase Menu del archivo PMenu.py
+from colorama import Fore, Style # Importamos las clases Fore y Style de la librería colorama
 
 class PersonalizedMenu(Menu): # Clase para mostrar el menú de webscrapping de una página personalizada
     def __init__(self): # Constructor de la clase
@@ -539,7 +544,7 @@ class WebScraper: # Clase para hacer scraping de una página web
 Este archivo define un módulo llamado WikiScraper que hereda del módulo WebScraper. WikiScraper proporciona métodos específicos para hacer scraping de tres wikis diferentes: la wiki de Python, la wiki de Hipopótamos y la wiki de la Historia de la Humanidad. Cada método utiliza el método scrape_website de la clase WebScraper para hacer el scraping de la página web correspondiente y guardar el resultado en un archivo de texto con un nombre específico.
 
 ```python
-from Paquete.WebScraper import * # Importamos la clase WebScraper del archivo WebScraper.py
+from Paquete.WebScraper import WebScraper # Importamos la clase WebScraper del archivo WebScraper.py
 
 class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
     def __init__(self): # Constructor de la clase
@@ -551,7 +556,7 @@ class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
         self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
 
     def scrape_hipopotamos_wiki(self): # Método para hacer scraping de la wiki de Hipopótamos
-        url = "https://www.oasysparquetematico.com/hipopotamos/amp/" # URL de la wiki de Hipopótamos
+        url = "https://www.nationalgeographic.es/animales/hipopotamo" # URL de la wiki de Hipopótamos
         filename = "Wiki acerca de Hipopótamos.txt" # Nombre del archivo de salida
         self.scrape_website(url, filename) # Llama al método scrape_website de la clase WebScraper
 
@@ -565,7 +570,7 @@ class WikiScraper(WebScraper): # Clase para hacer scraping de una wiki
 Este archivo define un módulo llamado RetailScraper, que también hereda de la clase WebScraper. La clase RetailScraper proporciona métodos específicos para hacer scraping de diferentes páginas de Mercado Libre, cada uno destinado a categorías de productos específicos.
 
 ```python
-from Paquete.WebScraper import * # Importamos la clase WebScraper del archivo WebScraper.py
+from Paquete.WebScraper import WebScraper # Importamos la clase WebScraper del archivo WebScraper.py
 
 class RetailScraper(WebScraper): # Clase para hacer scraping de una página de Retail
     def __init__(self): # Constructor de la clase
